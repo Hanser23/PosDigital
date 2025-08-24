@@ -65,11 +65,11 @@ export default function CartPage() {
                 </TableHeader>
                 <TableBody>
                   {cart.map((item) => (
-                    <TableRow key={item.id}>
+                    <TableRow key={item.productId}>
                       <TableCell>
                         <div className="flex items-center gap-4">
                           <Image
-                            src={item.image}
+                            src={item.photo}
                             alt={item.name}
                             width={64}
                             height={64}
@@ -85,7 +85,7 @@ export default function CartPage() {
                             variant="outline"
                             size="icon"
                             onClick={() =>
-                              updateQuantity(item.id, item.quantity - 1)
+                              updateQuantity(item.productId, item.quantity - 1)
                             }
                           >
                             <Minus className="h-4 w-4" />
@@ -94,7 +94,7 @@ export default function CartPage() {
                             type="number"
                             value={item.quantity}
                             onChange={(e) =>
-                              updateQuantity(item.id, parseInt(e.target.value))
+                              updateQuantity(item.productId, parseInt(e.target.value))
                             }
                             className="w-16 text-center"
                           />
@@ -102,7 +102,7 @@ export default function CartPage() {
                             variant="outline"
                             size="icon"
                             onClick={() =>
-                              updateQuantity(item.id, item.quantity + 1)
+                              updateQuantity(item.productId, item.quantity + 1)
                             }
                           >
                             <Plus className="h-4 w-4" />
@@ -116,7 +116,7 @@ export default function CartPage() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromCart(item.productId)}
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>

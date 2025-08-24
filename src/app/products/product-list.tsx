@@ -30,13 +30,14 @@ export function ProductList({ products }: { products: Product[] }) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {products.map((product) => (
-        <Card key={product.id} className="flex flex-col">
+        <Card key={product.productId} className="flex flex-col">
           <CardHeader>
             <div className="relative aspect-video w-full">
               <Image
-                src={product.image}
+                src={product.photo}
                 alt={product.name}
                 fill
+                unoptimized
                /* className="rounded-t-lg object-cover"
                 data-ai-hint={product['data-ai-hint']}*/
               />
@@ -48,14 +49,24 @@ export function ProductList({ products }: { products: Product[] }) {
               {product.description}
             </CardDescription>
           </CardContent>
+                    
+          <CardFooter className="flex items-center justify-between">
+            <span className="badge text-bg-primary">Primary</span>
+
+            <p className="text-sm font-bold">
+              {product.catgName}
+            </p>
+            </CardFooter>
           <CardFooter className="flex items-center justify-between">
             <p className="text-xl font-bold">
-              ${product.price.toFixed(2)}
+              ${product.price}
             </p>
-            <Button onClick={() => handleAddToCart(product)}>
-              <ShoppingCart className="mr-2 h-4 w-4" />
-              Agregar al Carro
-            </Button>
+<button
+  type="button"
+  className="btn btn-success"
+  onClick={() => handleAddToCart(product)}
+>              <ShoppingCart className="mr-2 h-4 w-4" />
+            </button>
           </CardFooter>
         </Card>
       ))}
