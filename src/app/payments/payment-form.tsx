@@ -53,16 +53,17 @@ export function PaymentForm() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    // Simulación de procesamiento de pago
     setTimeout(() => {
         setIsLoading(false);
         toast({
             title: '¡Pago Exitoso!',
             description: `Su pago de $${(totalPrice * 1.08).toFixed(2)} ha sido procesado.`,
-        });
+        });206
+        
         router.push('/dashboard');
     }, 2000);
   }
+
 
   return (
     <Form {...form}>

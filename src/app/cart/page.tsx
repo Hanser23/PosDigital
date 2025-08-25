@@ -75,6 +75,7 @@ export default function CartPage() {
                             height={64}
                             className="rounded-md object-cover"
                             data-ai-hint={item['data-ai-hint']}
+                            unoptimized
                           />
                           <span className="font-medium">{item.name}</span>
                         </div>

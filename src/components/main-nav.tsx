@@ -63,11 +63,19 @@ export function MainNav() {
               isActive={pathname === item.href}
               className="w-full"
             >
-              <item.icon className="mr-3 size-5" />
-              <span>{item.label}</span>
+            <div className="relative inline-flex items-center">
+              <div className="relative">
+                <item.icon className="size-5" />
+                {item.badge && (
+                  <SidebarMenuBadge className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    {item.badge}
+                  </SidebarMenuBadge>
+                )}
+              </div>
+              <span className="ml-3">{item.label}</span>
+            </div>
             </SidebarMenuButton>
           </Link>
-          {item.badge && <SidebarMenuBadge>{item.badge}</SidebarMenuBadge>}
         </SidebarMenuItem>
       ))}
     </SidebarMenu>
